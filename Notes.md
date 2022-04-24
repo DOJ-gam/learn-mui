@@ -44,3 +44,23 @@
   I am a p tag with h1 styles
 </Typography>
 ```
+
+# Custom Components
+
+- You can create a custom component(Button, Typography, etc) by using the 'styled' from MUI
+
+  ```js
+  import { styled } from "@mui/material";
+
+  const CustomButton = styled(Button)({
+    backgroundColor: "red",
+    color: "blue",
+    margin: 5,
+    "&:hover": { backgroundColor: "pink" },
+    "&:disabled": { backgroundColor: "yellow" },
+  });
+
+  <CustomButton startIcon={<Settings />} variant="contained" sx={{}}>
+    My Custom Button
+  </CustomButton>;
+  ```
