@@ -64,3 +64,60 @@
     My Custom Button
   </CustomButton>;
   ```
+
+# Theme
+
+- You can create your own theme if you already have a specific design pattern you want to follow
+- You first create a theme.js file and import 'createTheme' from mui, and create your custom theme
+
+```js
+import { createTheme } from "@mui/material";
+
+export const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#B90000",
+      light: "#B93730",
+    },
+    secondary: {
+      main: "#F99999",
+    },
+    dojColor: {
+      main: "#440888",
+    },
+  },
+});
+// Checkout docs for more
+```
+
+- To use your theme, you have to rap the components you want to use the theme with the 'themeProvider'.
+  - If its the whole app, you can do it in the main index.js
+
+```js
+import { ThemeProvider } from "@mui/material";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { theme } from "./theme";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
+  </React.StrictMode>
+);
+```
+
+- You can also access your theme in your custom components by adding a function and passing the theme as a param when creating the custom component.
+
+```js
+const CustomButton2 = styled(Button)(({ theme }) => ({
+  backgroundColor: theme.palette.dojColor.main,
+  color: theme.palette.secondary.main,
+  margin: 5,
+  "&:hover": { backgroundColor: "purple" },
+  "&:disabled": { backgroundColor: "yellow" },
+}));
+```
