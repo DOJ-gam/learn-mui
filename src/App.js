@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { Add, SettingsIcon } from "@mui/icons-material";
 
 function App() {
@@ -16,6 +16,21 @@ function App() {
       <Button variant="outlined">Outlined</Button>
       <Button disabled variant="contained">
         Disabled Contained
+      </Button>
+      <Typography variant="h1" component="p">
+        I am a p tag with h1 styles
+      </Typography>
+      <Button
+        variant="contained"
+        sx={{
+          backgroundColor: "red",
+          color: "blue",
+          margin: 5,
+          "&:hover": { backgroundColor: "pink" },
+          "&:disabled": { backgroundColor: "yellow" },
+        }}
+      >
+        My Custom Button
       </Button>
     </div>
   );
